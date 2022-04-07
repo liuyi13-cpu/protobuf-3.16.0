@@ -8,16 +8,14 @@ lua中proto解析使用的lua-protobuf，命名规则使用默认proto文件里�
 --------
 版本：[protobuf-csharp-3.6.1.zip](https://github.com/protocolbuffers/protobuf/releases/download/v3.16.0/protobuf-csharp-3.16.0.zip)
 
-csharp_helpers.h新增
---------------------
+**csharp_helpers.h新增**
 ```c++
 std::string UnderscoresToCamelCase1(const std::string& input,
                                    bool cap_next_letter,
                                    bool preserve_period);
 ```
                                    
-csharp_helpers.cc
------------------
+**csharp_helpers.cc**
 ```c++
 GetFileNameBase()
     return UnderscoresToCamelCase1(StripDotProto(base), true, false);
@@ -37,3 +35,27 @@ std::string UnderscoresToCamelCase1(const std::string& input,
     ...
 }
 ```
+
+mac
+---
+```msbuild
+brew install autoconf automake libtool
+
+git clone https://github.com/google/protobuf.git
+cd protobuf
+./autogen.sh
+./configure --disable-shared
+make
+make install
+```
+https://www.jianshu.com/p/93aeae0d78e5
+
+win
+---
+使用cmake导出vs工程，使用vs2019编译protoc.exe
+
+https://www.jianshu.com/p/f806faef245f
+
+https://blog.csdn.net/dai_jing/article/details/83010324
+
+![](image.png)
