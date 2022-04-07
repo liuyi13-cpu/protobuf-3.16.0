@@ -10,12 +10,15 @@ lua中proto解析使用的lua-protobuf，命名规则使用默认proto文件里�
 
 csharp_helpers.h新增
 --------------------
+```c++
 std::string UnderscoresToCamelCase1(const std::string& input,
                                    bool cap_next_letter,
                                    bool preserve_period);
+```
                                    
 csharp_helpers.cc
 -----------------
+```c++
 GetFileNameBase()
     return UnderscoresToCamelCase1(StripDotProto(base), true, false);
     // return UnderscoresToPascalCase(StripDotProto(base));
@@ -33,3 +36,4 @@ std::string UnderscoresToCamelCase1(const std::string& input,
                                    bool preserve_period) {
     ...
 }
+```
