@@ -93,6 +93,10 @@ std::string UnderscoresToCamelCase(const std::string& input,
                                    bool cap_next_letter,
                                    bool preserve_period);
 
+std::string UnderscoresToCamelCase1(const std::string& input,
+                                   bool cap_next_letter,
+                                   bool preserve_period);
+                                   
 inline std::string UnderscoresToCamelCase(const std::string& input, bool cap_next_letter) {
   return UnderscoresToCamelCase(input, cap_next_letter, false);
 }

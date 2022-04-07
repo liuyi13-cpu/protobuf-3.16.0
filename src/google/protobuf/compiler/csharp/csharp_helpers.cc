@@ -124,7 +124,8 @@ std::string GetFileNameBase(const FileDescriptor* descriptor) {
     std::string proto_file = descriptor->name();
     int lastslash = proto_file.find_last_of("/");
     std::string base = proto_file.substr(lastslash + 1);
-    return UnderscoresToPascalCase(StripDotProto(base));
+    // return UnderscoresToPascalCase(StripDotProto(base));
+    return UnderscoresToCamelCase1(StripDotProto(base), true, false);
 }
 
 std::string GetReflectionClassUnqualifiedName(const FileDescriptor* descriptor) {
@@ -139,8 +140,15 @@ std::string GetExtensionClassUnqualifiedName(const FileDescriptor* descriptor) {
   return GetFileNameBase(descriptor) + "Extensions";
 }
 
-// TODO(jtattermusch): can we reuse a utility function?
+// 默认去掉转换
 std::string UnderscoresToCamelCase(const std::string& input,
+                                   bool cap_next_letter,
+                                   bool preserve_period) {
+  return input;                         
+}
+
+// TODO(jtattermusch): can we reuse a utility function?
+std::string UnderscoresToCamelCase1(const std::string& input,
                                    bool cap_next_letter,
                                    bool preserve_period) {
   std::string result;
